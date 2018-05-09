@@ -1,0 +1,73 @@
+<mat-sidenav-container class="app-sidenav-container">
+  <mat-sidenav #sidenav class="sidenav" mode="side" [opened]="isOpen" appPs>
+    <div class="sidenav-scrollbar-container" fxLayout="column">
+      <mat-nav-list class="sidenav-list sidenav-toplevel">
+        <div class="sidenav-item">
+          <a class="sidenav-anchor" mat-list-item mat-ripple routerLink="dashboard" routerLinkActive="active1">
+            <mat-icon>dashboard</mat-icon>
+            <span class="sidenav-item-name fade-in-on-icon-sidenav">Dashboard</span>
+            <!-- fill space -->
+            <span fxFlex></span>
+            <span class="badge fade-in-on-icon-sidenav" style="margin-right: 12px;">New</span>
+          </a>
+        </div>
+        <div class="sidenav-item" appNavDropdown>
+          <a class="sidenav-anchor" mat-list-item mat-ripple routerLink="dashboard" routerLinkActive="active1" appNavDropdownToggle>
+            <mat-icon>apps</mat-icon>
+            <span class="sidenav-item-name fade-in-on-icon-sidenav">UserManager</span>
+            <span fxFlex></span>
+            <mat-icon class="sidenav-item-dropdown-indicator rotate fade-in-on-icon-sidenav">expand_more</mat-icon>
+          </a>
+          <!-- Sub Menu-->
+          <mat-nav-list class="sidenav-list sidenav-list-nested" fxLayout="column">
+            <div class="sidenav-item">
+              <a class="sidenav-anchor" mat-list-item mat-ripple routerLink="user-manage/organization-units" routerLinkActive="active">
+                <mat-icon></mat-icon>
+                <span class="sidenav-item-name fade-in-on-icon-sidenav">OrganizationUnits</span>
+                <span fxFlex></span>
+              </a>
+            </div>
+            <div class="sidenav-item">
+              <a class="sidenav-anchor" mat-list-item mat-ripple routerLink="user-manage/roles" routerLinkActive="active">
+                <mat-icon></mat-icon>
+                <span class="sidenav-item-name fade-in-on-icon-sidenav">Roles</span>
+                <span fxFlex></span>
+              </a>
+            </div>
+            <div class="sidenav-item">
+              <a class="sidenav-anchor" mat-list-item mat-ripple routerLink="user-manage/users" routerLinkActive="active">
+                <mat-icon></mat-icon>
+                <span class="sidenav-item-name fade-in-on-icon-sidenav">Users</span>
+                <span fxFlex></span>
+              </a>
+            </div>
+          </mat-nav-list>
+        </div>
+      </mat-nav-list>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav #rightsidenav class="rightsidenav" opened mode="side" [opened]="isRightSideOpen" 
+  position="end">
+  <mat-card>
+      <div class="container">
+          <mat-button-toggle-group>
+              <mat-button-toggle>Small</mat-button-toggle>
+              <mat-button-toggle>Medium</mat-button-toggle>
+              <mat-button-toggle>Large</mat-button-toggle>
+            </mat-button-toggle-group>
+
+            <mat-form-field>
+                <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+      </div>
+
+    </mat-card>
+</mat-sidenav>
+
+  <div class="app-sidenav-content">
+    <router-outlet></router-outlet>
+  </div>
+</mat-sidenav-container>
